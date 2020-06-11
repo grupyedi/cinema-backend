@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * DaoManager is a general manager class for Data Access Objects
@@ -109,6 +110,30 @@ public class DaoManager<T> {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    /**
+     * Starts the transaction to database
+     * Tries to update the given entity in database
+     * If transaction fails, rolls back the database to last stable point
+     *
+     * @param data updated version of existing entity from database
+     * @return success of update operation
+     */
+    public boolean update(T data) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.update(data);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
         }
     }
 
