@@ -21,20 +21,13 @@ public class DaoManager<T> {
     private final Class<T> type;
 
     /**
-     * Table name of corresponding SQL table for the T entity
-     */
-    private final String tableName;
-
-    /**
      * Inject the type object of T entity
      * Inject the table name of T entity
      *
      * @param type type object of T entity
-     * @param tableName table name of T entity
      */
-    public DaoManager(Class<T> type, String tableName) {
+    public DaoManager(Class<T> type) {
         this.type = type;
-        this.tableName = tableName;
     }
 
     /**
@@ -90,7 +83,7 @@ public class DaoManager<T> {
      */
     public List<T> getAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            String queryStr = "from " + tableName;
+            String queryStr = "from " + type.getTypeName();
             return query(queryStr);
         } catch (Exception e) {
             e.printStackTrace();
