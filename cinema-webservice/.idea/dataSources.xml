@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="9d6dd5f7-85a0-42fe-8793-fa26a57dc6be">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+C:/PioHome/Codeshop/JavaShop/cinema/cinema-webservice/src/main/resources/hibernate.cfg.xml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/hibernate_db?useSSL=FALSE&amp;createDatabaseIfNotExist=TRUE&amp;useUnicode=YES&amp;characterEncoding=UTF-8&amp;allowPublicKeyRetrieval=true</jdbc-url>
+    </data-source>
+  </component>
+</project>
