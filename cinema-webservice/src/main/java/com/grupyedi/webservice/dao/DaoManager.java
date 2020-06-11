@@ -13,6 +13,20 @@ import org.hibernate.Transaction;
 public class DaoManager<T> {
 
     /**
+     * Type object of T entity
+     */
+    private final Class<T> type;
+
+    /**
+     * Inject the type object of T entity
+     *
+     * @param type type object of T entity
+     */
+    public DaoManager(Class<T> type) {
+        this.type = type;
+    }
+
+    /**
      * Starts the transaction to database
      * Tries to save the given entity to database
      * If transaction fails, rolls back the database to last stable point
@@ -26,6 +40,7 @@ public class DaoManager<T> {
             transaction = session.beginTransaction();
             session.save(data);
             transaction.commit();
+            return true;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -33,8 +48,28 @@ public class DaoManager<T> {
             e.printStackTrace();
             return false;
         }
+    }
 
-        return true;
+    /**
+     * Get entity from database by primary key
+     *
+     * @param id primary key in database
+     * @return entity or null
+     */
+    public T get(int id) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            T data = session.get(type, id);
+            transaction.commit();
+            return data;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
