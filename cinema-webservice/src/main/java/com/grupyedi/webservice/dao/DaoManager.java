@@ -4,6 +4,8 @@ import com.grupyedi.webservice.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 /**
  * DaoManager is a general manager class for Data Access Objects
  * It is responsible for CRUD operations on Database
@@ -18,12 +20,20 @@ public class DaoManager<T> {
     private final Class<T> type;
 
     /**
+     * Table name of corresponding SQL table for the T entity
+     */
+    private final String tableName;
+
+    /**
      * Inject the type object of T entity
+     * Inject the table name of T entity
      *
      * @param type type object of T entity
+     * @param tableName table name of T entity
      */
-    public DaoManager(Class<T> type) {
+    public DaoManager(Class<T> type, String tableName) {
         this.type = type;
+        this.tableName = tableName;
     }
 
     /**
@@ -67,6 +77,36 @@ public class DaoManager<T> {
             if (transaction != null) {
                 transaction.rollback();
             }
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * Get all entities from database table
+     *
+     * @return entities or null
+     */
+    public List<T> getAll() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            String queryStr = "from " + tableName;
+            return query(queryStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * Creates custom query for this entity
+     *
+     * @param queryStr query string
+     * @return queried entities or null
+     */
+    public List<T> query(String queryStr) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery(queryStr).getResultList();
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
