@@ -137,4 +137,28 @@ public class DaoManager<T> {
         }
     }
 
+    /**
+     * Starts the transaction to database
+     * Tries to delete the given entity from database
+     * If transaction fails, rolls back the database to last stable point
+     *
+     * @param data entity to delete from database
+     * @return success of delete operation
+     */
+    public boolean delete(T data) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.delete(data);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }
