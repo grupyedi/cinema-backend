@@ -30,6 +30,17 @@ public class User {
 
     // TODO: purchase history list
 
+    public User() {}
+
+    public User(String gsm, String email, String password, String firstName, String lastName, int age) {
+        this.gsm = gsm;
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+
     public int getId() {
         return id;
     }

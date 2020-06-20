@@ -19,6 +19,14 @@ public class Ticket {
     @Column(name = "discountRate")
     public double discountRate;
 
+    public Ticket() {}
+
+    public Ticket(double price, String description, double discountRate) {
+        this.price = price;
+        this.description = description;
+        this.discountRate = discountRate;
+    }
+
     public int getId() {
         return id;
     }
