@@ -3,7 +3,7 @@ package com.grupyedi.webservice.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Genre")
+@Table(name = "genre")
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
