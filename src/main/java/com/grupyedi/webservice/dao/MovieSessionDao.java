@@ -26,6 +26,6 @@ public class MovieSessionDao extends DaoManager<MovieSession> {
             }
         }
 
-        return this.save(data);
+        return super.save(data);
     }
 }

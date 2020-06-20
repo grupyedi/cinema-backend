@@ -26,6 +26,6 @@ public class SaloonDao extends DaoManager<Saloon> {
             }
         }
 
-        return this.save(data);
+        return super.save(data);
     }
 }

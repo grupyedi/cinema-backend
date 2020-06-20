@@ -26,6 +26,6 @@ public class MovieDao extends DaoManager<Movie> {
             }
         }
 
-        return this.save(data);
+        return super.save(data);
     }
 }

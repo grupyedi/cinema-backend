@@ -25,6 +25,6 @@ public class GenreDao extends DaoManager<Genre> {
             }
         }
 
-        return this.save(data);
+        return super.save(data);
     }
 }
