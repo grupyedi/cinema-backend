@@ -3,19 +3,20 @@ package com.grupyedi.webservice.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "t_purchase")
+@Table(name = "purchase")
 public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    @Column(name = "id")
+    private int id;
 
-    @OneToOne(cascade = CascadeType.ALL, targetEntity = Ticket.class)
-    @JoinColumn(name = "c_ticket_id")
-    public Ticket ticket;
+    @ManyToOne()
+    @JoinColumn(name = "ticket_id")
+    private Ticket ticket;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "c_movie_id", table = "t_movie")
-    public Movie movie;
+    @OneToMany()
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
 
     @OneToOne(cascade = CascadeType.ALL, targetEntity = Saloon.class)
     @JoinColumn(name = "c_saloon_id")
