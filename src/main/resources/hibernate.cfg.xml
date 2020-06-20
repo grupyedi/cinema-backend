@@ -26,7 +26,6 @@
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
 
         <!-- Register Entities Here -->
-        <mapping class="com.grupyedi.webservice.entity.Student" />
         <mapping class="com.grupyedi.webservice.entity.Genre" />
         <mapping class="com.grupyedi.webservice.entity.Movie" />
         <mapping class="com.grupyedi.webservice.entity.Purchase" />
