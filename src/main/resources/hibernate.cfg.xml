@@ -27,12 +27,12 @@
 
         <!-- Register Entities Here -->
         <mapping class="com.grupyedi.webservice.entity.Student" />
-<!--        <mapping class="com.grupyedi.webservice.entity.Genre" />-->
-<!--        <mapping class="com.grupyedi.webservice.entity.Movie" />-->
+        <mapping class="com.grupyedi.webservice.entity.Genre" />
+        <mapping class="com.grupyedi.webservice.entity.Movie" />
 <!--        <mapping class="com.grupyedi.webservice.entity.Purchase" />-->
 <!--        <mapping class="com.grupyedi.webservice.entity.Saloon" />-->
 <!--        <mapping class="com.grupyedi.webservice.entity.SaloonMovie" />-->
-<!--        <mapping class="com.grupyedi.webservice.entity.Ticket" />-->
-<!--        <mapping class="com.grupyedi.webservice.entity.User" />-->
+        <mapping class="com.grupyedi.webservice.entity.Ticket" />
+        <mapping class="com.grupyedi.webservice.entity.User" />
     </session-factory>
 </hibernate-configuration>
