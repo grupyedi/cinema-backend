@@ -7,22 +7,57 @@ import javax.persistence.*;
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    @Column(name = "id")
+    private int id;
 
-    @Column(name = "c_price")
-    public double price;
+    @Column(name = "price")
+    private double price;
 
-    @Column(name = "c_description")
+    @Column(name = "description")
     public String description;
 
-    @Column(name = "c_discountRate", nullable = false)
+    @Column(name = "discountRate")
     public double discountRate;
 
-    public Ticket(double price, String description, double discountRate) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
+    }
+
+    public double getDiscountRate() {
+        return discountRate;
+    }
+
+    public void setDiscountRate(double discountRate) {
         this.discountRate = discountRate;
     }
 
-    public Ticket() {}
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", discountRate=" + discountRate +
+                '}';
+    }
 }
