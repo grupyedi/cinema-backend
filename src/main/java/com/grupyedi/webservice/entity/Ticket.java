@@ -3,20 +3,23 @@ package com.grupyedi.webservice.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "t_ticket")
+@Table(name = "ticket")
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    @Column(name = "id")
+    private int id;
 
-    @Column(name = "c_price")
-    public double price;
+    @Column(name = "price")
+    private double price;
 
-    @Column(name = "c_description")
+    @Column(name = "description")
     public String description;
 
-    @Column(name = "c_discountRate", nullable = false)
+    @Column(name = "discountRate")
     public double discountRate;
+
+    public Ticket() {}
 
     public Ticket(double price, String description, double discountRate) {
         this.price = price;
@@ -24,5 +27,45 @@ public class Ticket {
         this.discountRate = discountRate;
     }
 
-    public Ticket() {}
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public double getDiscountRate() {
+        return discountRate;
+    }
+
+    public void setDiscountRate(double discountRate) {
+        this.discountRate = discountRate;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", discountRate=" + discountRate +
+                '}';
+    }
 }

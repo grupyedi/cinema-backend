@@ -3,12 +3,43 @@ package com.grupyedi.webservice.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "t_genre")
+@Table(name = "genre")
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    @Column(name = "id")
+    private int id;
 
-    @Column(name = "c_name")
-    public String name;
+    @Column(name = "name")
+    private String name;
+
+    public Genre() {}
+
+    public Genre(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
