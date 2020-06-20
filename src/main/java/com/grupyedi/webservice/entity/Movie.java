@@ -20,7 +20,7 @@ public class Movie {
     @JoinColumn(name = "genre_id")
     private Genre genre;
 
-    @Column(name = "summary")
+    @Column(name = "summary", length = 1000)
     private String summary;
 
     @Column(name = "director")
