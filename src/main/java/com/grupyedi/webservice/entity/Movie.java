@@ -28,6 +28,8 @@ public class Movie {
 
     // TODO: add actors as list
 
+    //TODO: comment list
+
     @Column(name = "ageRating")
     private int ageRating;
 

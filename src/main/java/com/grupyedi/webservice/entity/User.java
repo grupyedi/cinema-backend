@@ -30,6 +30,8 @@ public class User {
 
     // TODO: purchase history list
 
+    // TODO: comment list
+
     public User() {}
 
     public User(String gsm, String email, String password, String firstName, String lastName, int age) {
