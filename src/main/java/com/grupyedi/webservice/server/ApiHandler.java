@@ -110,4 +110,27 @@ public class ApiHandler {
             ctx.status(403);
         }
     }
+
+    private void loginUser(Context ctx) {
+        UserDao userDao = new UserDao(User.class);
+
+        List<User> userList = userDao.getAll();
+        String gsm = (String) ctx.req.getAttribute("gsm");
+        String password = (String) ctx.req.getAttribute("password");
+
+        for(User user: userList) {
+            if(user.getGsm().equals(gsm)) {
+                if(user.getPassword().equals(password)) {
+                    ctx.status(200);
+                    return;
+                } else {
+                    ctx.status(403);
+                    return;
+                }
+            }
+        }
+
+        ctx.status(404);
+        return;
+    }
 }
