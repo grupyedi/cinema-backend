@@ -30,8 +30,6 @@ public class Constants {
             "    <li class=\\\"has-line-data\\\" data-line-start=\\\"22\\\" data-line-end=\\\"23\\\">Javalin - library used for opening endpoints and serving the server.</li>\n" +
             "    <li class=\\\"has-line-data\\\" data-line-start=\\\"23\\\" data-line-end=\\\"25\\\">AWS - for hosting.</li>\n" +
             "    </ul>\n" +
-            "    <h3 class=\\\"code-line\\\" data-line-start=25 data-line-end=26><a id=\\\"Plugins_25\\\"></a>Plugins</h3>\n" +
-            "    <p class=\\\"has-line-data\\\" data-line-start=\\\"27\\\" data-line-end=\\\"28\\\">Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.</p>\n" +
             "    <h2 class=\\\"code-line\\\" data-line-start=29 data-line-end=30><a id=\\\"HTTP_Requests_for_Endpoints_Table_29\\\"></a>HTTP Requests for Endpoints Table</h2>\n" +
             "    <table class=\\\"table table-striped table-bordered\\\">\n" +
             "    <thead>\n" +
