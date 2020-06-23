@@ -85,6 +85,11 @@ public class Constants {
             "    <td>Get details of the user with given id</td>\n" +
             "    <td>GET</td>\n" +
             "    </tr>\n" +
+            "    <tr>\n" +
+            "    <td><a href=\"users/1/purchases\"> /users/:id/purchases</a></td>\n" +
+            "    <td>Get purchase history of given user</td>\n" +
+            "    <td>GET</td>\n" +
+            "    </tr>\n" +
             "    </tbody>\n" +
             "    </table>\n" +
             "    </body></html>";

@@ -27,6 +27,7 @@ public class ApiHandler {
         api.post("/users/login", this::loginUser);
         api.post("/tickets/purchase", this::purchaseTicket);
         api.get("/users/:id", this::getUser);
+        api.get("/users/:id/purchases", this::getUsersPurchaseHistory);
     }
 
     private void getMovies(Context ctx) {
@@ -195,5 +196,31 @@ public class ApiHandler {
         } else {
             ctx.json(user);
         }
+    }
+
+    private void getUsersPurchaseHistory(Context ctx) {
+        DaoManager<Purchase> purchaseDaoManager = new DaoManager<>(Purchase.class);
+        UserDao userDao = new UserDao(User.class);
+
+        int userId = Integer.parseInt(ctx.pathParam("id"));
+
+        List<Purchase> purchaseList = purchaseDaoManager.getAll();
+        List<Purchase> userPurchases = new ArrayList<>();
+
+        if(purchaseList.isEmpty()) {
+            ctx.json(userPurchases);
+            return;
+        }
+
+        for(Purchase purchase : purchaseList) {
+            User currUser = purchase.getUser();
+            if(currUser != null) {
+                if(currUser.getId() == userId) {
+                    userPurchases.add(purchase);
+                }
+            }
+        }
+
+        ctx.json(userPurchases);
     }
 }
