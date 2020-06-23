@@ -152,10 +152,12 @@ public class ApiHandler {
         return;
     }
 
-    private class PurchaseReq {
+    static private class PurchaseReq {
         public int ticketId;
         public int movieSessionId;
         public int userId;
+
+        public PurchaseReq() {}
 
         public PurchaseReq(int ticketId, int userId, int movieSessionId) {
             this.ticketId = ticketId;
@@ -172,9 +174,11 @@ public class ApiHandler {
 
         ObjectMapper mapper = JavalinJackson.getObjectMapper();
         PurchaseReq reqObj;
+        String reqBody = ctx.body();
         try {
-            reqObj = mapper.readValue(ctx.body(), PurchaseReq.class);
-        } catch (JsonProcessingException e) {
+            reqObj = mapper.readValue(reqBody, PurchaseReq.class);
+        } catch (Exception e) {
+            ctx.status(403);
             e.printStackTrace();
             return;
         }
@@ -229,6 +233,11 @@ public class ApiHandler {
         int userId = Integer.parseInt(ctx.pathParam("id"));
 
         List<Purchase> purchaseList = purchaseDaoManager.getAll();
+        if(purchaseList == null) {
+            ctx.status(400);
+            return;
+        }
+
         List<Purchase> userPurchases = new ArrayList<>();
 
         if(purchaseList.isEmpty()) {
