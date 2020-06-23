@@ -1,9 +1,12 @@
 package com.grupyedi.webservice.server;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupyedi.webservice.dao.*;
 import com.grupyedi.webservice.entity.*;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
+import io.javalin.plugin.json.JavalinJackson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -149,15 +152,36 @@ public class ApiHandler {
         return;
     }
 
+    private class PurchaseReq {
+        public int ticketId;
+        public int movieSessionId;
+        public int userId;
+
+        public PurchaseReq(int ticketId, int userId, int movieSessionId) {
+            this.ticketId = ticketId;
+            this.userId = userId;
+            this.movieSessionId = movieSessionId;
+        }
+    }
+
     private void purchaseTicket(Context ctx) {
         DaoManager<Ticket> ticketDao = new DaoManager<>(Ticket.class);
         DaoManager<Purchase> purchaseDaoManager = new DaoManager<>(Purchase.class);
         UserDao userDao = new UserDao(User.class);
         MovieSessionDao movieSessionDao = new MovieSessionDao(MovieSession.class);
 
-        int ticketId = (int) ctx.req.getAttribute("ticket-id");
-        int userId = (int) ctx.req.getAttribute("user-id");
-        int movieSessionId = (int) ctx.req.getAttribute("movie-session-id");
+        ObjectMapper mapper = JavalinJackson.getObjectMapper();
+        PurchaseReq reqObj;
+        try {
+            reqObj = mapper.readValue(ctx.body(), PurchaseReq.class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        int ticketId = reqObj.ticketId;
+        int userId = reqObj.userId;
+        int movieSessionId = reqObj.movieSessionId;
 
         Ticket ticket = ticketDao.get(ticketId);
         User user = userDao.get(userId);
