@@ -22,8 +22,9 @@ public class ApiHandler {
         api.get("/movie-sessions", this::getMovieSessions);
         api.get("/genres", this::getGenres);
         api.get("/saloons", this::getSaloons);
-        api.post("/users/create", this::createUser);
-        api.post("/users/login", this::createUser);
+        api.get("/tickets", this::getTickets);
+        api.post("/users/register", this::createUser);
+        api.post("/users/login", this::loginUser);
     }
 
     private void getMovies(Context ctx) {
@@ -72,9 +73,20 @@ public class ApiHandler {
 
         if(genreList == null) {
             ctx.status(400);
-            return;
         } else {
             ctx.json(genreList);
+        }
+    }
+
+    private void getTickets(Context ctx) {
+        DaoManager<Ticket> ticketDao = new DaoManager<>(Ticket.class);
+
+        List<Ticket> ticketList = ticketDao.getAll();
+
+        if(ticketList == null) {
+            ctx.status(400);
+        } else {
+            ctx.json(ticketList);
         }
     }
 

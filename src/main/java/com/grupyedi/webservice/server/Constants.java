@@ -63,14 +63,19 @@ public class Constants {
             "    <td>GET</td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "    <td>Medium</td>\n" +
-            "    <td>asadasd</td>\n" +
-            "    <td>FOO</td>\n" +
+            "    <td><a href=\"tickets\"> /tickets</a></td>\n" +
+            "    <td>All available ticket options</td>\n" +
+            "    <td>GET</td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "    <td>Google Analytics</td>\n" +
-            "    <td>asdasdasd</td>\n" +
-            "    <td>YAYY</td>\n" +
+            "    <td><a href=\"users/login\"> /users/login</a></td>\n" +
+            "    <td>Attempt to login user with given json data</td>\n" +
+            "    <td>POST</td>\n" +
+            "    </tr>\n" +
+            "    <tr>\n" +
+            "    <td><a href=\"users/register\"> /users/register</a></td>\n" +
+            "    <td>Attempt to register user with given json data</td>\n" +
+            "    <td>POST</td>\n" +
             "    </tr>\n" +
             "    </tbody>\n" +
             "    </table>\n" +
