@@ -1,5 +1,6 @@
 package com.grupyedi.webservice.server;
 
+import com.sun.xml.bind.v2.runtime.reflect.opt.Const;
 import io.javalin.Javalin;
 
 public class Server {
@@ -16,7 +17,7 @@ public class Server {
     public boolean start(int portNumber, String greet, String urlMap) {
         if(!running) {
             app = Javalin.create().start(portNumber);
-            app.get("/", ctx -> ctx.result(greet + "\n" + urlMap));
+            app.get("/", ctx -> ctx.html(Constants.GREET_HTML));
 
             running = true;
         }
