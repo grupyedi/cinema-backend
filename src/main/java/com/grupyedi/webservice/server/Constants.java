@@ -30,8 +30,6 @@ public class Constants {
             "    <li class=\\\"has-line-data\\\" data-line-start=\\\"22\\\" data-line-end=\\\"23\\\">Javalin - library used for opening endpoints and serving the server.</li>\n" +
             "    <li class=\\\"has-line-data\\\" data-line-start=\\\"23\\\" data-line-end=\\\"25\\\">AWS - for hosting.</li>\n" +
             "    </ul>\n" +
-            "    <h3 class=\\\"code-line\\\" data-line-start=25 data-line-end=26><a id=\\\"Plugins_25\\\"></a>Plugins</h3>\n" +
-            "    <p class=\\\"has-line-data\\\" data-line-start=\\\"27\\\" data-line-end=\\\"28\\\">Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.</p>\n" +
             "    <h2 class=\\\"code-line\\\" data-line-start=29 data-line-end=30><a id=\\\"HTTP_Requests_for_Endpoints_Table_29\\\"></a>HTTP Requests for Endpoints Table</h2>\n" +
             "    <table class=\\\"table table-striped table-bordered\\\">\n" +
             "    <thead>\n" +
@@ -43,34 +41,54 @@ public class Constants {
             "    </thead>\n" +
             "    <tbody>\n" +
             "    <tr>\n" +
-            "    <td>/foo</td>\n" +
-            "    <td>gives foo data</td>\n" +
+            "    <td><a href=\"movies\"> /movies</a></td>\n" +
+            "    <td>All available movies</td>\n" +
             "    <td>GET</td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "    <td>GitHub</td>\n" +
-            "    <td>asdasdasd</td>\n" +
+            "    <td><a href=\"movie-sessions\"> /movie-sessions</a></td>\n" +
+            "    <td>Available and non available movie sessions</td>\n" +
             "    <td>GET</td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "    <td>Google Drive</td>\n" +
-            "    <td>asdasdasd</td>\n" +
+            "    <td><a href=\"genres\"> /genres</a></td>\n" +
+            "    <td>All available genres</td>\n" +
+            "    <td>GET</td>\n" +
+            "    </tr>\n" +
+            "    <tr>\n" +
+            "    <td><a href=\"saloons\"> /saloons</a></td>\n" +
+            "    <td>All available saloons</td>\n" +
+            "    <td>GET</td>\n" +
+            "    </tr>\n" +
+            "    <tr>\n" +
+            "    <td><a href=\"tickets\"> /tickets</a></td>\n" +
+            "    <td>All available ticket options</td>\n" +
+            "    <td>GET</td>\n" +
+            "    </tr>\n" +
+            "    <tr>\n" +
+            "    <td><a href=\"users/login\"> /users/login</a></td>\n" +
+            "    <td>Attempt to login user with given json data</td>\n" +
             "    <td>POST</td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "    <td>OneDrive</td>\n" +
-            "    <td>asdasdasd</td>\n" +
-            "    <td>LUCK</td>\n" +
+            "    <td><a href=\"users/register\"> /users/register</a></td>\n" +
+            "    <td>Attempt to register user with given json data</td>\n" +
+            "    <td>POST</td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "    <td>Medium</td>\n" +
-            "    <td>asadasd</td>\n" +
-            "    <td>FOO</td>\n" +
+            "    <td><a href=\"tickets/purchase\"> /tickets/purchase</a></td>\n" +
+            "    <td>Attempt to purchase a ticket with given json data</td>\n" +
+            "    <td>POST</td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "    <td>Google Analytics</td>\n" +
-            "    <td>asdasdasd</td>\n" +
-            "    <td>YAYY</td>\n" +
+            "    <td><a href=\"users/1\"> /users/:id</a></td>\n" +
+            "    <td>Get details of the user with given id</td>\n" +
+            "    <td>GET</td>\n" +
+            "    </tr>\n" +
+            "    <tr>\n" +
+            "    <td><a href=\"users/1/purchases\"> /users/:id/purchases</a></td>\n" +
+            "    <td>Get purchase history of given user</td>\n" +
+            "    <td>GET</td>\n" +
             "    </tr>\n" +
             "    </tbody>\n" +
             "    </table>\n" +
