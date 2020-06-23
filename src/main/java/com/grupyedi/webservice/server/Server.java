@@ -7,8 +7,10 @@ public class Server {
     private static final Server instance = new Server();
     private Javalin app;
     private boolean running = false;
+    private ApiHandler apiHandler;
 
-    private Server() {}
+    private Server() {
+    }
 
     public static Server getInstance() {
         return instance;
@@ -18,6 +20,9 @@ public class Server {
         if(!running) {
             app = Javalin.create().start(portNumber);
             app.get("/", ctx -> ctx.html(Constants.GREET_HTML));
+
+            apiHandler = new ApiHandler(app);
+            apiHandler.initializeApi();
 
             running = true;
         }
