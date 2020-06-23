@@ -80,6 +80,11 @@ public class Constants {
             "    <td>Attempt to purchase a ticket with given json data</td>\n" +
             "    <td>POST</td>\n" +
             "    </tr>\n" +
+            "    <tr>\n" +
+            "    <td><a href=\"users/1\"> /users/:id</a></td>\n" +
+            "    <td>Get details of the user with given id</td>\n" +
+            "    <td>GET</td>\n" +
+            "    </tr>\n" +
             "    </tbody>\n" +
             "    </table>\n" +
             "    </body></html>";

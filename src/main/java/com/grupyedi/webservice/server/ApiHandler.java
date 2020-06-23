@@ -26,6 +26,7 @@ public class ApiHandler {
         api.post("/users/register", this::createUser);
         api.post("/users/login", this::loginUser);
         api.post("/tickets/purchase", this::purchaseTicket);
+        api.get("/users/:id", this::getUser);
     }
 
     private void getMovies(Context ctx) {
@@ -176,6 +177,23 @@ public class ApiHandler {
             ctx.status(200);
         } else {
             ctx.status(400);
+        }
+    }
+
+    private void getUser(Context ctx) {
+        UserDao userDao = new UserDao(User.class);
+        String userIdStr = ctx.pathParam("id");
+        if(userIdStr == null) {
+            ctx.status(400);
+            return;
+        }
+        int userId = Integer.parseInt(userIdStr);
+
+        User user = userDao.get(userId);
+        if(user == null) {
+            ctx.status(404);
+        } else {
+            ctx.json(user);
         }
     }
 }
