@@ -43,24 +43,24 @@ public class Constants {
             "    </thead>\n" +
             "    <tbody>\n" +
             "    <tr>\n" +
-            "    <td>/foo</td>\n" +
-            "    <td>gives foo data</td>\n" +
+            "    <td><a href=\"movies\"> /movies</a></td>\n" +
+            "    <td>All available movies</td>\n" +
             "    <td>GET</td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "    <td>GitHub</td>\n" +
-            "    <td>asdasdasd</td>\n" +
+            "    <td><a href=\"movie-sessions\"> /movie-sessions</a></td>\n" +
+            "    <td>Available and non available movie sessions</td>\n" +
             "    <td>GET</td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "    <td>Google Drive</td>\n" +
-            "    <td>asdasdasd</td>\n" +
-            "    <td>POST</td>\n" +
+            "    <td><a href=\"genres\"> /genres</a></td>\n" +
+            "    <td>All available genres</td>\n" +
+            "    <td>GET</td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
-            "    <td>OneDrive</td>\n" +
-            "    <td>asdasdasd</td>\n" +
-            "    <td>LUCK</td>\n" +
+            "    <td><a href=\"saloons\"> /saloons</a></td>\n" +
+            "    <td>All available saloons</td>\n" +
+            "    <td>GET</td>\n" +
             "    </tr>\n" +
             "    <tr>\n" +
             "    <td>Medium</td>\n" +
