@@ -14,7 +14,8 @@ public class Movie {
     @Column(name = "name")
     private String name;
 
-    // TODO: add banner urls as list
+    @Column(name = "banner_url")
+    private String bannerUrl;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "genre_id")
@@ -36,12 +37,13 @@ public class Movie {
 
     public Movie() {}
 
-    public Movie(String name, String summary, String director, int ageRating, Date releaseDate) {
+    public Movie(String name, String summary, String director, int ageRating, Date releaseDate, String bannerUrl) {
         this.name = name;
         this.summary = summary;
         this.director = director;
         this.ageRating = ageRating;
         this.releaseDate = releaseDate;
+        this.bannerUrl = bannerUrl;
     }
 
     public int getId() {
@@ -98,5 +100,13 @@ public class Movie {
 
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public String getBannerUrl() {
+        return bannerUrl;
+    }
+
+    public void setBannerUrl(String bannerUrl) {
+        this.bannerUrl = bannerUrl;
     }
 }
