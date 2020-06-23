@@ -12,13 +12,13 @@ import java.util.Scanner;
 
 public class ServerConfigManager {
     private final Map<String, String> configMap;
-    private final File configFile;
+//    private final File configFile;
 
     public ServerConfigManager(String configResource) throws IOException {
         configMap = new HashMap<>();
-        configFile = new File(Objects.requireNonNull(this.getClass().getClassLoader().getResource(configResource)).getFile());
-        if(configFile == null)
-            throw new FileNotFoundException();
+//        configFile = new File(Objects.requireNonNull(this.getClass().getClassLoader().getResource(configResource)).getFile());
+//        if(configFile == null)
+//            throw new FileNotFoundException();
 
         boolean success = constructConfigMap();
         if(!success)
@@ -58,23 +58,26 @@ public class ServerConfigManager {
     }
 
     private boolean constructConfigMap() {
-        try {
-            Scanner fileScanner = new Scanner(configFile);
-            while(fileScanner.hasNextLine()) {
-                String line = fileScanner.nextLine();
-                line = line.trim();
-                String[] tokens = line.split(RegexUtil.whiteSpaceRegex);
-                if(tokens.length != 2) {
-                    return false;
-                }
-                String option = tokens[0];
-                String value = tokens[1];
-                configMap.put(option, value);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
+        configMap.put("greet", "greet");
+        configMap.put("port", "80");
+        configMap.put("url-map", "url-map");
+//        try {
+//            Scanner fileScanner = new Scanner(configFile);
+//            while(fileScanner.hasNextLine()) {
+//                String line = fileScanner.nextLine();
+//                line = line.trim();
+//                String[] tokens = line.split(RegexUtil.whiteSpaceRegex);
+//                if(tokens.length != 2) {
+//                    return false;
+//                }
+//                String option = tokens[0];
+//                String value = tokens[1];
+//                configMap.put(option, value);
+//            }
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//            return false;
+//        }
 
         return true;
     }
