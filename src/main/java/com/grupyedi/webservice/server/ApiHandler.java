@@ -1,13 +1,7 @@
 package com.grupyedi.webservice.server;
 
-import com.grupyedi.webservice.dao.GenreDao;
-import com.grupyedi.webservice.dao.MovieDao;
-import com.grupyedi.webservice.dao.MovieSessionDao;
-import com.grupyedi.webservice.dao.SaloonDao;
-import com.grupyedi.webservice.entity.Genre;
-import com.grupyedi.webservice.entity.Movie;
-import com.grupyedi.webservice.entity.MovieSession;
-import com.grupyedi.webservice.entity.Saloon;
+import com.grupyedi.webservice.dao.*;
+import com.grupyedi.webservice.entity.*;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
@@ -28,6 +22,8 @@ public class ApiHandler {
         api.get("/movie-sessions", this::getMovieSessions);
         api.get("/genres", this::getGenres);
         api.get("/saloons", this::getSaloons);
+        api.post("/users/create", this::createUser);
+        api.post("/users/login", this::createUser);
     }
 
     private void getMovies(Context ctx) {
@@ -92,6 +88,26 @@ public class ApiHandler {
             return;
         } else {
             ctx.json(saloonList);
+        }
+    }
+
+    private void createUser(Context ctx) {
+        UserDao userDao = new UserDao(User.class);
+
+        String gsm = (String) ctx.req.getAttribute("gsm");
+        String email = (String) ctx.req.getAttribute("email");
+        String password = (String) ctx.req.getAttribute("password");
+        String firstName = (String) ctx.req.getAttribute("firstname");
+        String lastName = (String) ctx.req.getAttribute("lastname");
+        int age = (int) ctx.req.getAttribute("age");
+
+        User user = new User(gsm,  email,  password, firstName, lastName, age);
+
+        boolean success = userDao.save(user);
+        if(success) {
+            ctx.status(200);
+        } else {
+            ctx.status(403);
         }
     }
 }
