@@ -75,6 +75,11 @@ public class Constants {
             "    <td>Attempt to register user with given json data</td>\n" +
             "    <td>POST</td>\n" +
             "    </tr>\n" +
+            "    <tr>\n" +
+            "    <td><a href=\"tickets/purchase\"> /tickets/purchase</a></td>\n" +
+            "    <td>Attempt to purchase a ticket with given json data</td>\n" +
+            "    <td>POST</td>\n" +
+            "    </tr>\n" +
             "    </tbody>\n" +
             "    </table>\n" +
             "    </body></html>";

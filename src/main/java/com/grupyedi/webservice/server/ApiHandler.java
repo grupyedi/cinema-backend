@@ -25,6 +25,7 @@ public class ApiHandler {
         api.get("/tickets", this::getTickets);
         api.post("/users/register", this::createUser);
         api.post("/users/login", this::loginUser);
+        api.post("/tickets/purchase", this::purchaseTicket);
     }
 
     private void getMovies(Context ctx) {
@@ -144,5 +145,37 @@ public class ApiHandler {
 
         ctx.status(404);
         return;
+    }
+
+    private void purchaseTicket(Context ctx) {
+        DaoManager<Ticket> ticketDao = new DaoManager<>(Ticket.class);
+        DaoManager<Purchase> purchaseDaoManager = new DaoManager<>(Purchase.class);
+        UserDao userDao = new UserDao(User.class);
+        MovieSessionDao movieSessionDao = new MovieSessionDao(MovieSession.class);
+
+        int ticketId = (int) ctx.req.getAttribute("ticket-id");
+        int userId = (int) ctx.req.getAttribute("user-id");
+        int movieSessionId = (int) ctx.req.getAttribute("movie-session-id");
+
+        Ticket ticket = ticketDao.get(ticketId);
+        User user = userDao.get(userId);
+        MovieSession movieSession = movieSessionDao.get(movieSessionId);
+
+        if(ticket == null || user == null || movieSession == null) {
+            ctx.status(400);
+            return;
+        }
+
+        Purchase purchase = new Purchase();
+        purchase.setTicket(ticket);
+        purchase.setUser(user);
+        purchase.setMovie(movieSession);
+
+        boolean result = purchaseDaoManager.save(purchase);
+        if(result) {
+            ctx.status(200);
+        } else {
+            ctx.status(400);
+        }
     }
 }
