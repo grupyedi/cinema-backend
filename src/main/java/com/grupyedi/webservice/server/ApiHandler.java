@@ -2,8 +2,10 @@ package com.grupyedi.webservice.server;
 
 import com.grupyedi.webservice.dao.GenreDao;
 import com.grupyedi.webservice.dao.MovieDao;
+import com.grupyedi.webservice.dao.MovieSessionDao;
 import com.grupyedi.webservice.entity.Genre;
 import com.grupyedi.webservice.entity.Movie;
+import com.grupyedi.webservice.entity.MovieSession;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
@@ -21,6 +23,8 @@ public class ApiHandler {
 
     public void initializeApi() {
         api.get("/movies", this::getMovies);
+        api.get("/movie-sessions", this::getMovieSessions);
+        api.get("/genres", this::getGenres);
     }
 
     private void getMovies(Context ctx) {
@@ -47,5 +51,31 @@ public class ApiHandler {
         }
 
         ctx.json(map);
+    }
+
+    private void getMovieSessions(Context ctx) {
+        MovieSessionDao movieSessionDao = new MovieSessionDao(MovieSession.class);
+
+        List<MovieSession> movieSessions = movieSessionDao.getAll();
+
+        if(movieSessions == null) {
+            ctx.status(400);
+            return;
+        } else {
+            ctx.json(movieSessions);
+        }
+    }
+
+    private void getGenres(Context ctx) {
+        GenreDao genreDao = new GenreDao(Genre.class);
+
+        List<Genre> genreList = genreDao.getAll();
+
+        if(genreList == null) {
+            ctx.status(400);
+            return;
+        } else {
+            ctx.json(genreList);
+        }
     }
 }
